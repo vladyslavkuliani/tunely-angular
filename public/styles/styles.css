@@ -17,3 +17,7 @@
 .hidden {
   display: none;
 }
+
+.form-control{
+  margin-bottom: 20px;
+}
