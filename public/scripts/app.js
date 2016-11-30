@@ -56,4 +56,21 @@ function AlbumsIndexController ($http) {
      vm.albums.splice(index, 1);
   }
 
+  vm.editAlbum = function(album){
+    $http({
+      method: 'PUT',
+      url: '/api/albums/' + album._id,
+      data:album
+    }).then(updateSuccess, error);
+  }
+
+  function updateSuccess(response){
+    console.log(response.data);
+    var updatedAlbum = vm.albums.find(function(album){
+      return album._id === response.data._id;
+    });
+    var index = vm.albums.indexOf(updatedAlbum);
+    vm.albums[index] = updatedAlbum;
+  }
+
 }
