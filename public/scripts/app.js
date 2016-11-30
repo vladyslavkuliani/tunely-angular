@@ -13,10 +13,6 @@ AlbumsIndexController.$inject = ['$http'];
 function AlbumsIndexController ($http) {
   var vm = this;
   vm.newAlbum = {};
-  vm.newAlbum = {
-    name: 'Viva Hate',
-    artistName: 'Morrissey'
-  };
 
   $http({
     method: 'GET',
@@ -38,4 +34,26 @@ function AlbumsIndexController ($http) {
       console.log('There was an error posting the data', response);
     });
   }
+
+  vm.deleteAlbum = function(album){
+    //console.log(album);
+    $http({
+        method: 'DELETE',
+        url: '/api/albums/' + album._id
+    }).then(deleteSuccess, error);
+  }
+
+  function error(err){
+    console.log(err);
+  }
+
+  function deleteSuccess(response){
+     var deletedAlbum = vm.albums.find(function(album){
+       return album._id === response.data._id;
+     });
+     var index = vm.albums.indexOf(deletedAlbum);
+     console.log(index);
+     vm.albums.splice(index, 1);
+  }
+
 }
