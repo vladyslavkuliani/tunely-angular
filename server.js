@@ -37,6 +37,13 @@ app.get('/templates/:name', function templates(req, res) {
 });
 
 
+app.get('/templates/:name', function templates(req, res) {
+  var name = req.params.name;
+  res.sendFile(__dirname + '/views/templates/' + name + '.html');
+});
+
+
+
 /*
  * JSON API Endpoints
  */
