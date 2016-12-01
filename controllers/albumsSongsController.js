@@ -15,9 +15,18 @@ function create(req, res) {
     console.log(req.body);
     var newSong = new db.Song(req.body);  // dangerous, in a real app we'd validate the incoming data
     foundAlbum.songs.push(newSong);
+    //sort by track number
+    foundAlbum.songs.sort(function(song1, song2){
+      return song1.trackNumber >= song2.trackNumber;
+    });
+    //change numbering
+    for(var i=0; i<foundAlbum.songs.length; i++){
+      foundAlbum.songs[i].trackNumber = i+1;
+    }
+
     foundAlbum.save(function(err, savedAlbum) {
       console.log('newSong created: ', newSong);
-      res.json(newSong);  // responding with just the song, some APIs may respond with the parent object (Album in this case)
+      res.json(foundAlbum);  // responding with just the song, some APIs may respond with the parent object (Album in this case)
     });
   });
 }
@@ -30,10 +39,14 @@ function destroy(req, res) {
     var correctSong = foundAlbum.songs.id(req.params.songId);
     if (correctSong) {
       correctSong.remove();
+      //changing numbering of the songs
+      for(var i=0; i<foundAlbum.songs.length; i++){
+        foundAlbum.songs[i].trackNumber = i+1;
+      }
       // resave the album now that the song is gone
       foundAlbum.save(function(err, saved) {
         console.log('REMOVED ', correctSong.name, 'FROM ', saved.songs);
-        res.json(correctSong);
+        res.json(foundAlbum);
       });
     } else {
       res.send(404);
