@@ -10,8 +10,11 @@ function index(req, res) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> 3fb4bc4e7e18c5e24c3c8368a0660fb9e0c56b05
+=======
+>>>>>>> 84c4816c2623a4297512b6d3918939204192f204
 module.exports.index = index;
