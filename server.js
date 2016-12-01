@@ -31,6 +31,11 @@ app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+app.get('/templates/:name', function templates(req, res) {
+  var name = req.params.name;
+  res.sendFile(__dirname + '/views/templates/' + name + '.html');
+});
+
 
 app.get('/templates/:name', function templates(req, res) {
   var name = req.params.name;
@@ -56,7 +61,10 @@ app.post('/api/albums/:albumId/songs', controllers.albumsSongs.create);
 app.delete('/api/albums/:albumId/songs/:songId', controllers.albumsSongs.destroy);
 app.put('/api/albums/:albumId/songs/:songId', controllers.albumsSongs.update);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 84c4816c2623a4297512b6d3918939204192f204
 // ALL OTHER ROUTES (ANGULAR HANDLES)
 // redirect all other paths to index
 app.get('*', function homepage (req, res) {

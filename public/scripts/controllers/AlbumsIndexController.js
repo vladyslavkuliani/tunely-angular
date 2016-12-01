@@ -31,6 +31,7 @@ function AlbumsIndexController($http) {
         });
     }
 
+<<<<<<< HEAD
     vm.editAlbum = function(album) {
         $http({
             method: 'PUT',
@@ -55,3 +56,18 @@ function AlbumsIndexController($http) {
         });
     }
   }
+=======
+  vm.deleteAlbum = function (album) {
+    $http({
+      method: 'DELETE',
+      url: '/api/albums/'+ album._id
+    }).then(function successCallback(json) {
+      var index = vm.albums.indexOf(album);
+      vm.albums.splice(index,1)
+    }, function errorCallback(response) {
+      console.log('There was an error deleting the data', response);
+    });
+  }
+
+}
+>>>>>>> 84c4816c2623a4297512b6d3918939204192f204
