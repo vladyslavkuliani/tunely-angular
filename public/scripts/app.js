@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 angular.module('tunely', []).controller('AlbumsIndexController', AlbumsIndexController);
 
 function AlbumsIndexController(){
@@ -23,4 +24,35 @@ function AlbumsIndexController(){
     artistName: 'The Smiths'
   }
 ];
+=======
+/* CLIENT-SIDE JS
+ *
+ * This is your main angular file. Edit as you see fit.
+ *
+ */
+
+angular
+    .module('tunely', ['ngRoute'])
+    .config(config);
+
+config.$inject = ['$routeProvider', '$locationProvider'];
+
+function config($routeProvider, $locationProvider) {
+    $routeProvider
+        .when('/', {
+            templateUrl: '/templates/albums',
+            controllerAs: 'albumsIndexCtrl',
+            controller: 'AlbumsIndexController'
+        })
+        .when('/albums/:id', {
+            templateUrl: '/templates/albums-show',
+            controllerAs: 'albumsShowCtrl',
+            controller: 'AlbumsShowController'
+        });
+
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
+>>>>>>> 3fb4bc4e7e18c5e24c3c8368a0660fb9e0c56b05
 }

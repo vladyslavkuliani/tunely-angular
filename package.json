@@ -1,6 +1,10 @@
 {
   "name": "tunely",
+<<<<<<< HEAD
   "version": "1.0.31-A",
+=======
+  "version": "1.0.31A",
+>>>>>>> 3fb4bc4e7e18c5e24c3c8368a0660fb9e0c56b05
   "description": "An app for tracking your music collection",
   "main": "server.js",
   "scripts": {
@@ -23,8 +27,11 @@
     "bower": "^1.7.9",
     "express": "^4.13.3",
     "mongoose": "^4.6.0"
+<<<<<<< HEAD
   },
   "directories": {
     "doc": "docs"
+=======
+>>>>>>> 3fb4bc4e7e18c5e24c3c8368a0660fb9e0c56b05
   }
 }
